@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Sentence-Similiarity
+    </title>
+    <style>
+        * {box-sizing:border-box}
+
+        .box {
+          width: 100%;
+          background-color: #ddd;
+        }
+
+
+        .skills {
+        text-align: right;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: white;
+                }
+        .html {width: {{ bar_prediction }}%; background-color: #2196F3;}
+    </style>
+    <link rel="stylesheet" href=
+            "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div >
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/" >Semantic Textual Similarity</a>
+        <a class="navbar-brand" href="/about">About</a>
+    </nav>
+</div>
+
+{% block body %}
+<div class="container">
+    <h1 class="jumbotron">A tool that checks the similarity of two sentences with the similarity score measure.</h1>
+    <form action="{{ url_for('submit') }}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Source Sentence</label>
+            <textarea  class="form-control" name="textone"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Sentence to compare with</label>
+            <textarea class="form-control" name="texttwo"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">compute</button>
+    </form>
+</div>
+{% endblock body %}
+
+{% if prediction %}
+<div class="container">
+    <div class="box">
+    <h2>sentence similarity score is <i>{{prediction}}</i></h2>
+    <div class="skills html">{{prediction}}</div>
+    </div>
+</div>
+{% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
